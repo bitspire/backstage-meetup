@@ -1,10 +1,22 @@
-# [Backstage](https://backstage.io)
+# backstage-meetup
 
-This is your newly scaffolded Backstage App, Good Luck!
+## Description
 
-To start the app, run:
+Code for backstage meetup demo on 2022-06-21
 
-```sh
-yarn install
-yarn dev
+## Develop
+
+```bash
+# Edit .env to set `env` variables
+cp .env.example .env
+
+# Enter a nix shell
+nix-shell
+
+# install dependencies
+$ yarn
+
+# start development server
+$ yarn dev
 ```
+
