@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-import { createServiceBuilder } from '@backstage/backend-common';
+import {
+  createServiceBuilder,
+  loadBackendConfig,
+  SingleHostDiscovery,
+} from '@backstage/backend-common';
 import { Server } from 'http';
 import { Logger } from 'winston';
 import { createRouter } from './router';
@@ -29,9 +33,13 @@ export async function startStandaloneServer(
   options: ServerOptions,
 ): Promise<Server> {
   const logger = options.logger.child({ service: 'alertmanager-backend' });
+  const config = await loadBackendConfig({ logger, argv: process.argv });
+  const discovery = SingleHostDiscovery.fromConfig(config);
   logger.debug('Starting application server...');
   const router = await createRouter({
     logger,
+    config,
+    discovery,
   });
 
   let service = createServiceBuilder(module)
