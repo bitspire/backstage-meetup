@@ -29,6 +29,7 @@ import proxy from './plugins/proxy';
 import techdocs from './plugins/techdocs';
 import search from './plugins/search';
 import alertmanager from './plugins/alertmanager';
+import bucket from './plugins/bucket';
 import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
 
@@ -81,6 +82,7 @@ async function main() {
   const searchEnv = useHotMemoize(module, () => createEnv('search'));
   const appEnv = useHotMemoize(module, () => createEnv('app'));
   const alertManagerEnv = useHotMemoize(module, () => createEnv('alertmanager'));
+  const bucketEnv = useHotMemoize(module, () => createEnv('bucket'));
 
   const apiRouter = Router();
   apiRouter.use('/catalog', await catalog(catalogEnv));
@@ -90,6 +92,7 @@ async function main() {
   apiRouter.use('/proxy', await proxy(proxyEnv));
   apiRouter.use('/search', await search(searchEnv));
   apiRouter.use('/alertmanager', await alertmanager(alertManagerEnv));
+  apiRouter.use('/bucket', await bucket(bucketEnv));
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());
