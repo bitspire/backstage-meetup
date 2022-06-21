@@ -13,7 +13,7 @@ export const AlertmanagerPage = alertmanagerPlugin.provide(
   createRoutableExtension({
     name: 'AlertmanagerPage',
     component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
+      import('./components/AlertsComponent').then(m => m.AlertsComponent),
     mountPoint: rootRouteRef,
   }),
 );
