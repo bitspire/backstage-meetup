@@ -1,0 +1,1 @@
+export { AlertFetchComponent } from './AlertFetchComponent';

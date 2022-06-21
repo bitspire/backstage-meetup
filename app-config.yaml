@@ -105,11 +105,3 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
-
-alertManager:
-  apiPath: /api/v1
-  alerts:
-    - name: staging
-      url: https://alerts-staging.example.com
-    - name: production
-      url: https://alerts-prod.example.com
