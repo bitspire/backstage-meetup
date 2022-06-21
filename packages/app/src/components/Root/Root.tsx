@@ -20,6 +20,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import MapIcon from '@material-ui/icons/MyLocation';
 import LibraryBooks from '@material-ui/icons/LibraryBooks';
+import AddAlert from '@material-ui/icons/AddAlert';
 import CreateComponentIcon from '@material-ui/icons/AddCircleOutline';
 import LogoFull from './LogoFull';
 import LogoIcon from './LogoIcon';
@@ -96,6 +97,14 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         <SidebarScrollWrapper>
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
+        <SidebarDivider />
+        <SidebarScrollWrapper>
+          <SidebarItem
+            icon={AddAlert}
+            to="alertmanager"
+            text="Alertmanager"
+          />
+      </SidebarScrollWrapper>
       </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />
