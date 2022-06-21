@@ -43,6 +43,8 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
+import { FeatureFlagged } from '@backstage/core-app-api';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -99,12 +101,11 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         </SidebarScrollWrapper>
         <SidebarDivider />
         <SidebarScrollWrapper>
-          <SidebarItem
-            icon={AddAlert}
-            to="alertmanager"
-            text="Alertmanager"
-          />
-      </SidebarScrollWrapper>
+          <SidebarItem icon={AddAlert} to="alertmanager" text="Alertmanager" />
+          <FeatureFlagged with="bucket">
+            <SidebarItem icon={CreateNewFolderIcon} to="bucket" text="Bucket" />
+          </FeatureFlagged>
+        </SidebarScrollWrapper>
       </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />

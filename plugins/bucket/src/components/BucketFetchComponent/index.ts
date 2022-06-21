@@ -1,0 +1,1 @@
+export { BucketFetchComponent } from './BucketFetchComponent';

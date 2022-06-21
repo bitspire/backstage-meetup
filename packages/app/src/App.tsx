@@ -37,6 +37,7 @@ import { AlertmanagerPage } from '@internal/plugin-alertmanager';
 
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
+import { BucketPage } from '@internal/plugin-bucket';
 
 const app = createApp({
   apis,
@@ -110,6 +111,7 @@ const routes = (
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
     <Route path="/alertmanager" element={<AlertmanagerPage />} />
+    <Route path="/bucket" element={<BucketPage />} />
   </FlatRoutes>
 );
 

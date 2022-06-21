@@ -1,0 +1,1 @@
+export { BucketComponent } from './BucketComponent';
