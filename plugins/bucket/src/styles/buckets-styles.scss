@@ -1,0 +1,87 @@
+.create-cancel-div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.add-button {
+  background: transparent;
+  border-radius: 0;
+  border-color: transparent;
+}
+.custom-input-div {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+}
+.custom-row-div-text {
+  font-size: 18px;
+  text-align: center;
+  align-self: center;
+}
+.input-label {
+  width: 80px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #dee2e6;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.input-label-text {
+  align-self: center;
+  color: gray;
+  font-size: 13px;
+}
+.custom-input {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+}
+.text-field-input {
+  width: 100%;
+}
+.second-input-label {
+  width: 40px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.second-input-label-text {
+  align-self: center;
+  color: gray;
+  font-size: 13px;
+}
+.card-header-button-div {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.div-db-main {
+  flex-direction: row;
+  display: flex;
+  margin-top: 20px;
+}
+.layout-main-row-content {
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.layout-main-row-div-content {
+  flex-direction: row;
+  display: flex;
+}
+.advanced-button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 480px) {
+  .input-div {
+    flex-direction: column;
+  }
+}
