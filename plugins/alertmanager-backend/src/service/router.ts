@@ -14,22 +14,31 @@
  * limitations under the License.
  */
 
-import { errorHandler } from '@backstage/backend-common';
+import {
+  errorHandler,
+  PluginEndpointDiscovery,
+} from '@backstage/backend-common';
+import { Config } from '@backstage/config';
 import express from 'express';
 import Router from 'express-promise-router';
 import { Logger } from 'winston';
+import AlertManager from './alertmanager';
 
 export interface RouterOptions {
   logger: Logger;
+  config: Config;
+  discovery: PluginEndpointDiscovery;
 }
 
 export async function createRouter(
   options: RouterOptions,
 ): Promise<express.Router> {
   const { logger } = options;
-
+  const alertmanager = new AlertManager({ ...options });
   const router = Router();
   router.use(express.json());
+
+  router.get('/', alertmanager.listAlerts);
 
   router.get('/health', (_, response) => {
     logger.info('PONG!');
