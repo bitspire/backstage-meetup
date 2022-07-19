@@ -18,6 +18,8 @@ import {
   getVoidLogger,
   loadBackendConfig,
   PluginEndpointDiscovery,
+  UrlReader,
+
 } from '@backstage/backend-common';
 import express from 'express';
 import request from 'supertest';
@@ -26,7 +28,7 @@ import { createRouter } from './router';
 describe('createRouter', () => {
   let app: express.Express;
   let mockDiscoveryApi: jest.Mocked<PluginEndpointDiscovery>;
-
+let mockUrlReader: jest.Mocked<UrlReader>;
   beforeAll(async () => {
     const router = await createRouter({
       logger: getVoidLogger(),
@@ -35,6 +37,7 @@ describe('createRouter', () => {
         argv: process.argv,
       }),
       discovery: mockDiscoveryApi,
+      reader: mockUrlReader,
     });
     app = express().use(router);
   });

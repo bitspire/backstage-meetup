@@ -6,10 +6,12 @@ export default async function createPlugin({
   logger,
   config,
   discovery,
+  reader,
 }: PluginEnvironment): Promise<Router> {
   return await createRouter({
     logger,
     config,
     discovery,
+    reader,
   });
 }

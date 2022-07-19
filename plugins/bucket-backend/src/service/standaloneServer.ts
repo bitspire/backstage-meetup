@@ -18,6 +18,7 @@ import {
   createServiceBuilder,
   loadBackendConfig,
   SingleHostDiscovery,
+  UrlReaders,
 } from '@backstage/backend-common';
 import { Server } from 'http';
 import { Logger } from 'winston';
@@ -35,12 +36,14 @@ export async function startStandaloneServer(
   const logger = options.logger.child({ service: 'bucket-backend' });
   const config = await loadBackendConfig({ logger, argv: process.argv });
   const discovery = SingleHostDiscovery.fromConfig(config);
+  const reader = UrlReaders.default({ logger: options.logger, config });
 
   logger.debug('Starting application server...');
   const router = await createRouter({
     logger,
     config,
     discovery,
+    reader
   });
 
   let service = createServiceBuilder(module)

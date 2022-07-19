@@ -100,7 +100,7 @@ export default class GitOps {
     const suffix = (Math.random() + 1).toString(36).substring(7);
     const repoDir = path.join(os.tmpdir(), `${this.repoName}-${suffix}`);
     const author = { name: username, email };
-
+this.logger.debug(`author =========> ${JSON.stringify(author)}`);
     await this.git.clone({ url: this.repoUrl, dir: repoDir, ref: this.branch });
     // TODO need to refactor the stackName when adding the full RBAC permission.
     const filePath = `${this.dir}/Bucket.${stackName}.yaml`;
@@ -130,9 +130,8 @@ export default class GitOps {
 
   public applyHandler: express.RequestHandler = async (req, res) => {
     const stackName = req.params.id;
-    const username = req.params.username;
 
-    const { service, email, name, maxSize, maxObjects } = req.body;
+    const { service, email, username, name, maxSize, maxObjects } = req.body;
     const config = { name, maxSize, maxObjects };
     this.logger.info(
       `apply stackName=${stackName}, service=${service}, username=${username}`,

@@ -78,10 +78,10 @@ export async function createRouter(
   const router = Router();
   router.use(express.json());
 
-  router.get('/', authMiddleware(identity), gitops.listStacksHandler);
-  router.get('/:id', authMiddleware(identity), service.getHandler);
-  router.put('/:id', authMiddleware(identity), gitops.applyHandler);
-  router.delete('/:id', authMiddleware(identity), gitops.deleteHandler);
+  router.get('/', gitops.listStacksHandler);
+  router.get('/:id', service.getHandler);
+  router.put('/:id', gitops.applyHandler);
+  router.delete('/:id', gitops.deleteHandler);
 
   router.get('/health', (_, response) => {
     logger.info('PONG!');

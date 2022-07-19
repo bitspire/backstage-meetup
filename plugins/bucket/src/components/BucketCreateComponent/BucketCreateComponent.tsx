@@ -36,6 +36,7 @@ export const BucketCreateComponent = () => {
   const navigate = useNavigate();
   const identityApi = useApi(identityApiRef);
   identityApi.getProfileInfo().then(profile => {
+    console.log({profile})
     setEmail(profile.email || '');
     setUsername(
       profile.displayName?.toLocaleLowerCase().replace(' ', '-') || '',
@@ -52,6 +53,7 @@ export const BucketCreateComponent = () => {
       maxSize: maxSize ? maxSize : '5G',
       maxObjects: maxObjects ? maxObjects : '10',
       status: 'created',
+      username,
     };
     try {
       const response = await fetch(
